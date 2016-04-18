@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Canvas Animation</title>
+  <style>
+  canvas {border: 3px #CCC solid;}
+  </style>
+ </head>
+ <body>
+
+  <div id="container">
+   <canvas id="myCanvas" height="800" width="800"></canvas>
+  </div>
+  <script>
+var mainCanvas = document.querySelector("#myCanvas");
+var mainContext = mainCanvas.getContext("2d");
+ 
+var canvasWidth = mainCanvas.width;
+var canvasHeight = mainCanvas.height;
+
+
+
+var angle = 0;
+var x = 0; 
+var y = 400;
+var x2 = 400;
+var y2 = 0;
+var x3 = 200;
+var y3 = 600;
+
+
+var up = false;
+var left = false;
+var up2 = false;
+var left2 = false;
+var up3 = false;
+var left3 = false;
+
+
+var requestAnimationFrame = window.requestAnimationFrame || 
+                            window.mozRequestAnimationFrame || 
+                            window.webkitRequestAnimationFrame || 
+                            window.msRequestAnimationFrame;
+
+function drawCircle() {
+        
+
+    mainContext.clearRect(0, 0, canvasWidth, canvasHeight);
+     
+    // color in the background
+    mainContext.fillStyle = "#000000";
+    mainContext.fillRect(0, 0, canvasWidth, canvasHeight);
+     
+    // draw the circle
+    mainContext.beginPath();
+    var radius = 150 * Math.abs(Math.sin(.5 * angle));
+    mainContext.arc(x, y, radius, 0, Math.PI * 2, false);
+    mainContext.closePath();
+     
+    // color in the circle
+    if (left == false){
+     mainContext.fillStyle = "#006600";
+     mainContext.fill();
+    }
+    if (left == true){
+     mainContext.fillStyle = "#555555";
+     mainContext.fill();
+    }
+ 
+    //2draw the circle
+    mainContext.beginPath();
+    var radius = 150 * Math.abs(Math.sin(angle));
+    mainContext.arc(x2, y2, radius, 0, Math.PI * 2, false);
+    mainContext.closePath();
+
+    //2color in the circle
+    if (left2 == false){
+     mainContext.fillStyle = "#4444FF";
+     mainContext.fill();
+    }
+    if (left2 == true){
+     mainContext.fillStyle = "#990099";
+     mainContext.fill();
+    }
+
+
+    //3draw the circle
+    mainContext.beginPath();
+    var radius = 150 * Math.abs(Math.sin(2 * angle));
+    mainContext.arc(x3, y3, radius, 0, Math.PI * 2, false);
+    mainContext.closePath();
+
+    //3color in the circle
+    if (up3 == false){
+     mainContext.fillStyle = "#990000";
+     mainContext.fill();
+    }
+    if (up3 == true){
+     mainContext.fillStyle = "#AAAA00";
+     mainContext.fill();
+    }
+
+    requestAnimationFrame(drawCircle);
+    angle += Math.PI / 64;
+
+    
+
+    if (left == false ){
+     x =+ x + 20;
+    }
+    if (left == true ){
+     x =+ x - 10;
+    }
+    if (x == 820 ){
+     left =+ true;
+    }
+    if (x == -20 ){
+     left =+ false;
+    }
+    if (up == false ){
+     y =+ y + 10;
+    }
+    if (up == true ){
+     y =+ y - 10;
+    }
+    if (y == 810 ){
+     up =+ true;
+    }
+    if (y == -10 ){
+     up =+ false;
+    }
+
+
+    if (left2 == false ){
+     x2 =+ x2 + 20;
+    }
+    if (left2 == true ){
+     x2 =+ x2 - 10;
+    }
+    if (x2 == 820 ){
+     left2 =+ true;
+    }
+    if (x2 == -20 ){
+     left2 =+ false;
+    }
+    if (up2 == false ){
+     y2 =+ y2 + 10;
+    }
+    if (up2 == true ){
+     y2 =+ y2 - 10;
+    }
+    if (y2 == 810 ){
+     up2 =+ true;
+    }
+    if (y2 == -10 ){
+     up2 =+ false;
+    }
+
+
+    if (left3 == false ){
+     x3 =+ x3 + 10;
+    }
+    if (left3 == true ){
+     x3 =+ x3 - 10;
+    }
+    if (x3 == 820 ){
+     left3 =+ true;
+    }
+    if (x3 == -20 ){
+     left3 =+ false;
+    }
+    if (up3 == false ){
+     y3 =+ y3 - 10;
+    }
+    if (up3 == true ){
+     y3 =+ y3 + 20;
+    }
+    if (y3 == -20 ){
+     up3 =+ true;
+    }
+    if (y3 == 820 ){
+     up3 =+ false;
+    }
+}
+drawCircle();
+
+  </script>
+
+ </body>
+</html>
